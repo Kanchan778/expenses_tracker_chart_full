@@ -1,8 +1,10 @@
+// Importing necessary dependencies and files
 import 'package:expenses_tracker/chart.dart';
 import 'package:expenses_tracker/new_transaction.dart';
 import 'package:expenses_tracker/user_transactions.dart';
 import 'package:flutter/rendering.dart';
 
+// Importing transaction model and Flutter framework
 import './transaction.dart';
 import 'package:flutter/material.dart';
 import './transaction_list.dart';
@@ -20,12 +22,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Transaction> transactionList = [
+    // Initial transaction list with dummy data
     Transaction(
         id: "1", title: "Recharge", amount: 100, dateTime: DateTime.now()),
     Transaction(id: '1', title: "Lunch", amount: 100, dateTime: DateTime.now()),
   ];
 
   List<Transaction> get recentTransaction {
+    // Retrieve recent transactions within the last 7 days
     return transactionList.where((tx) {
         return tx.dateTime.isAfter
         (DateTime.now().subtract(
@@ -36,6 +40,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _addTransaction(String title, double amount) {
+    // Add a new transaction to the list
     var transaction = Transaction(
         id: DateTime.now().toString(),
         title: title,
@@ -47,6 +52,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _startAddNewTransaction(BuildContext context) {
+    // Open a bottom sheet modal to add a new transaction
     print("Hello");
     showModalBottomSheet(
       context: context,
@@ -77,8 +83,10 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
+            // Display the chart widget with recent transactions
             Chart(recentTransaction),
             //User_Transaction(),
+            // Display the transaction list widget with all transactions
             TransactionList(transactionList),
           ],
         ),

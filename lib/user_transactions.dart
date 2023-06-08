@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:ffi'; // Dart FFI library for working with native code
 
 import 'package:flutter/material.dart';
 import './new_transaction.dart';
@@ -29,8 +29,8 @@ class _User_TransactionState extends State<User_Transaction> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-            NewTransaction(addTransaction),
-            TransactionList(transactionList), 
+            NewTransaction(addTransaction), // Widget for adding new transactions
+            TransactionList(transactionList), // Widget for displaying the list of transactions
     ],);
   }
 }

@@ -10,20 +10,22 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
-
   final amountController = TextEditingController();
 
-  void onSubmitPressed(){
-
+  void onSubmitPressed() {
+    // Retrieve the entered title and amount
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if(enteredTitle.isEmpty || enteredAmount < 0){
+    // Check if the entered title is empty or amount is negative
+    if (enteredTitle.isEmpty || enteredAmount < 0) {
       return;
     }
 
-    widget.addTx(titleController.text,double.parse(amountController.text));
+    // Call the addTx function to add the transaction
+    widget.addTx(titleController.text, double.parse(amountController.text));
 
+    // Close the bottom sheet modal
     Navigator.of(context).pop();
   }
 
